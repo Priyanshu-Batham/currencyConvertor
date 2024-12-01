@@ -21,12 +21,12 @@ import { useState, useEffect } from "react";
 
 
 // fetch using async await
-function useCurrInfo(country) {
+function useCurrInfo(country, date = 'latest') {
     const [data, setData] = useState({});
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const p = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${country}.json`);
+                const p = await fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${date}/v1/${country}.json`);
                 const result = await p.json();
                 setData(result[country]);
                 console.log(result[country]);
@@ -35,7 +35,7 @@ function useCurrInfo(country) {
             }
         }
         fetchData();
-    }, [country]);
+    }, [country, date]);
     return data;
 }
 
