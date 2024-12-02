@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Monitor GitHub Actions workflows for outdated actions
+  - package-ecosystem: "github-actions"
+    directory: "/" # Location of your GitHub Actions workflow files
+    schedule:
+      interval: "daily" # Can be 'daily', 'weekly', or 'monthly'
+
+  # Monitor npm dependencies (adjust for your package manager)
+  - package-ecosystem: "npm"
+    directory: "/" # Root directory or where your `package.json` is located
+    schedule:
+      interval: "weekly"
+
+  # Monitor Python dependencies (adjust for other ecosystems you use)
+  - package-ecosystem: "pip"
+    directory: "/" # Root directory or where your `requirements.txt` is located
+    schedule:
+      interval: "weekly"
+
+  # Add more ecosystems as needed (e.g., Maven, Gradle, etc.)
